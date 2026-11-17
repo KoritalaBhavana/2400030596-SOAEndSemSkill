@@ -1,0 +1,26 @@
+package com.library.book;
+
+import org.springframework.web.bind.annotation.*;
+import java.util.*;
+
+@RestController
+@RequestMapping("/books")
+public class BookController {
+
+    @GetMapping
+    public List<String> getBooks() {
+
+        return Arrays.asList(
+            "Java Programming",
+            "Python Basics",
+            "Data Structures",
+            "Operating Systems"
+        );
+    }
+
+    @PostMapping
+    public String addBook(@RequestBody String book) {
+
+        return "Book added successfully: " + book;
+    }
+}

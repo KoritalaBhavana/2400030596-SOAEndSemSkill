@@ -1,0 +1,20 @@
+@Configuration
+public class GatewayConfig {
+
+    @Bean
+    public RouteLocator routes(
+            RouteLocatorBuilder builder) {
+
+        return builder.routes()
+
+            .route("book-service", r -> r
+                .path("/books/**")
+                .uri("lb://BOOK-SERVICE"))
+
+            .route("auth-service", r -> r
+                .path("/auth/**")
+                .uri("lb://AUTH-SERVICE"))
+
+            .build();
+    }
+}
